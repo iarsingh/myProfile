@@ -1,0 +1,113 @@
+# Professional Journey Module Requirements
+
+## 1. Objective
+Enable the blog/poetry website to showcase Akhilesh Ranjan Singh’s professional journey as a DevOps Engineer alongside his creative work, with **zero‑code updates** via the existing Strapi CMS.
+
+---
+
+## 2. Business Goals
+1. Strengthen personal brand by unifying tech career and literary passion.
+2. Provide recruiters and readers a clear, interactive view of career progression.
+3. Maintain single‑source‑of‑truth: all data editable from CMS admin.
+
+---
+
+## 3. User Stories
+| ID | As a… | I want to… | So that… |
+|---|---|---|---|
+| USR‑1 | Site visitor | read Akhilesh’s career timeline chronologically | I can gauge his expertise quickly. |
+| USR‑2 | Recruiter | filter the timeline by skill tags (e.g., *Kubernetes*) | I find relevant experience fast. |
+| USR‑3 | Author | add or edit a job role from Strapi without redeploy | the site stays up‑to‑date. |
+| USR‑4 | Mobile reader | scroll horizontally through the timeline | experience is intuitive on small screens. |
+| USR‑5 | Poetry fan | toggle between “Poems” and “Career” sections | I can focus on content that interests me. |
+
+---
+
+## 4. Functional Requirements
+### 4.1 Content Model (Strapi additions)
+| Collection | Field | Type | Validation |
+|---|---|---|---|
+| **WorkExperience** | `title` | String | Required |
+|  | `company` | String | Required |
+|  | `location` | String | Optional |
+|  | `start_date` / `end_date` | Date | `end_date` nullable (present) |
+|  | `description` | Rich Text | Max 2 000 chars |
+|  | `skills` | Relation → Tag | Many‑to‑Many |
+
+### 4.2 API
+* Next.js fetches `/work-experiences?sort=start_date:desc&populate=skills` at **build time**; triggers ISR re‑validate via Strapi webhook on content change.
+
+### 4.3 UI Components
+1. **CareerTimeline**
+   * Vertical on desktop, swipeable horizontal carousel on ≤ md screens.
+   * Each node shows job title, company, dates, tags, collapsible duties list.
+2. **Tech ↔ Poetry Toggle**
+   * Re‑use existing slider to switch between `/poems` and `/career`.
+3. **Skill Filter Chips**
+   * Clickable tags filter nodes client‑side.
+
+### 4.4 CMS Workflow
+* Roles **Author** & **Maintainer** may create/modify WorkExperience.
+* Revisions tracked; rollback possible.
+
+---
+
+## 5. Data (initial load)
+
+| Title | Company | Dates |
+|---|---|---|
+| Consultant | Capgemini | Sep 2024 – Present |
+| Senior Software Engineer | Tech Mahindra | Jul 2022 – Aug 2024 |
+| System Engineer | TCS | Jul 2021 – Jul 2022 |
+| Assistant System Engineer | TCS | Sep 2019 – Jul 2021 |
+
+Descriptions & key achievements sourced from the attached résumé.  
+
+*(See Appendix A.)*
+
+---
+
+## 6. Non‑Functional Requirements
+* **Performance**: Component bundle ≤ 5 KB gzipped; scrolling 60 FPS.
+* **Accessibility**: Keyboard navigable; WCAG 2.1 AA.
+* **Responsiveness**: Works ≥ 320 px; tested on Chrome, Safari, Firefox.
+* **SEO**: `structuredData` JSON‑LD for WorkExperience schema.
+
+---
+
+## 7. Acceptance Criteria
+1. Adding a new WorkExperience in Strapi appears on `/career` within 60 s (ISR).
+2. Mobile users can swipe through items; desktop users see vertical timeline.
+3. Skill filter updates list without full page reload.
+4. Toggle switch persists choice across sessions (localStorage).
+
+---
+
+## 8. Out‑of‑Scope
+* PDF résumé download generation (future).
+* External job‑application tracking integrations.
+
+---
+
+## Appendix A – Duties & Highlights
+
+### Consultant, Capgemini (Navi Mumbai, Sep 2024 – Present)
+* Spearheaded CI/CD pipelines with Jenkins, GitLab CI & Azure DevOps.  
+* Managed Kubernetes & Docker deployments for HA microservices.  
+* Automated GCP infrastructure via Terraform & Ansible.  
+* Implemented ELK‑based monitoring & Stream Security compliance. fileciteturn1file2
+
+### Senior Software Engineer, Tech Mahindra (Mumbai, Jul 2022 – Aug 2024)
+* Designed pipelines integrating Terraform, Kubernetes, Docker, Helm.  
+* Deployed microservices on K8s with Helm Charts.  
+* Integrated SAST/DAST security scans into Jenkins pipelines. fileciteturn1file2
+
+### System Engineer, TCS (Jul 2021 – Jul 2022)
+* Orchestrated CI/CD with Jenkins & Google Cloud Build on GCP.  
+* Migrated on‑prem DBs to Cloud SQL with minimal downtime.  
+* Deployed container solutions on GKE for reliability. fileciteturn1file2
+
+### Assistant System Engineer, TCS (Sep 2019 – Jul 2021)
+* Resolved production issues to meet SLAs.  
+* Maintained Azure‑hosted Java apps with Jenkins CI/CD.  
+* Automated cloud‑native deployment workflows. fileciteturn1file3

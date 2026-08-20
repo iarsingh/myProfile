@@ -1,5 +1,9 @@
 # Akhilesh Singh - Professional Portfolio
 
+<!-- repository-summary -->
+A Streamlit portfolio combining DevOps experience, poetry, interactive visualizations, AI assistance, and content administration.
+<!-- /repository-summary -->
+
 A dual-focused Streamlit portfolio showcasing DevOps engineering expertise alongside passion for poetry writing and listening.
 
 ## 🚀 Features

@@ -1,5 +1,36 @@
 # Akhilesh Singh - Professional Portfolio
 
+<!-- project-guide:start -->
+## Project guide
+
+[Project architecture](PROJECT_ARCHITECTURE.md) · [Interview questions and answers](INTERVIEW_QA.md)
+
+Use the architecture document for the component diagram, implementation boundaries, and verification entry points. The interview guide includes source-backed answers and project walkthroughs.
+
+### Implementation map
+
+| Component | Responsibility |
+| --- | --- |
+| [`components/skills_visualization.py`](components/skills_visualization.py) | Functions: `render_skills_visualization` |
+| [`components/poetry_section.py`](components/poetry_section.py) | Functions: `render_poetry_section` |
+| [`components/contact_info.py`](components/contact_info.py) | Functions: `render_contact_info` |
+| [`app.py`](app.py) | Functions: `main`, `render_overview`, `render_technical_journey`, `render_skills_certifications`, `render_creative_passion`, `render_ai_assistant`, `search_skills` |
+| [`components/career_timeline.py`](components/career_timeline.py) | Functions: `render_career_timeline` |
+| [`backend/admin_panel.py`](backend/admin_panel.py) | Functions: `save_data_to_file`, `admin_main`, `manage_work_experience`, `manage_skills_certifications`, `manage_poetry_content`, `manage_settings` |
+| [`admin.py`](admin.py) | Functions: `save_work_experience`, `save_skills_data`, `save_poetry_content` |
+| [`ai_assistant.py`](ai_assistant.py) | Functions: `get_portfolio_context`, `search_skills`, `search_experience`, `search_certifications`, `generate_answer` |
+| [`deploy.sh`](deploy.sh) | Implementation or supporting configuration |
+| [`setup.py`](setup.py) | Functions: `run_command`, `check_python`, `install_dependencies`, `create_config`, `test_installation`, `main` |
+| [`Dockerfile`](Dockerfile) | Container build/service configuration |
+| [`docker-compose.yml`](docker-compose.yml) | Container build/service configuration |
+| [`pyproject.toml`](pyproject.toml) | Implementation or supporting configuration |
+| [`README.md`](README.md) | Project explanations or operating notes |
+| [`replit.md`](replit.md) | Project explanations or operating notes |
+
+Setup and examples are described in the existing project notes below. Consult the component-specific manifests before assuming a single launch command.
+
+<!-- project-guide:end -->
+
 <!-- repository-summary -->
 A Streamlit portfolio combining DevOps experience, poetry, interactive visualizations, AI assistance, and content administration.
 <!-- /repository-summary -->

@@ -386,3 +386,11 @@ This project is open source and available under the MIT License.
 **Built with ❤️ using Streamlit, Python, and Plotly**
 
 *"Where cloud architecture meets creative expression"*
+
+## Documentation checks
+
+Project architecture, interview guides, and local source links are checked automatically on pushes and pull requests. Run the same check locally:
+
+```bash
+python3 .github/scripts/validate_project_docs.py
+```
